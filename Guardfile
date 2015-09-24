@@ -95,8 +95,8 @@ end
 # watch('%r{.+.gemspec}')
 # end
 
-guard 'yard' do
-  watch(%r{app/.+\.rb})
-  watch(%r{lib/.+\.rb})
-  watch(%r{ext/.+\.c})
-end
+# guard 'yard' do
+#   watch(%r{app/.+\.rb})
+#   watch(%r{lib/.+\.rb})
+#   watch(%r{ext/.+\.c})
+# end
