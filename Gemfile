@@ -22,7 +22,6 @@ group :test do
 	gem 'rspec-core'
 	gem 'rspec-expectations'
 	gem 'rspec-mocks'
-	gem 'rake'
 	gem 'simplecov', require: false
 	gem 'simplecov-rcov', require: false
 	gem 'simplecov-console', require: false
