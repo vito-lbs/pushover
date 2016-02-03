@@ -18,6 +18,6 @@ task :generate_spec_files do
 end
 
 
+# Travis-ci.org
 RSpec::Core::RakeTask.new(:spec)
-
 task :default => :spec
