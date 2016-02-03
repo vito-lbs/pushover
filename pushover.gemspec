@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
 
   # dependencies.
   spec.add_runtime_dependency "excon"
-  spec.add_runtime_dependency "slop"
+  spec.add_runtime_dependency "commander"
   spec.add_runtime_dependency "oj"
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
