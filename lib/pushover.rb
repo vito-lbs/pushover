@@ -1,9 +1,6 @@
 require 'httparty'
 require "yajl"
 require 'time'
-require 'bini'
-require 'bini/config'
-require 'bini/optparser'
 require 'open-uri'
 require 'pushover/mixins.rb'
 
@@ -16,11 +13,6 @@ end
 
 # The primary pushover namespace.
 module Pushover
-  # Unfuckingbelievable.  My code, and I still can't get it to work as expected.
-  Bini.long_name = 'pushover'
-  # lets save our config to it's own dir, just because.
-  Bini::Config.options[:file] = "#{Dir.home}/.config/pushover/credentials.yaml"
-  Bini::Config.load
 
   extend self
 
@@ -79,7 +71,7 @@ module Pushover
 
   # Return a [Hash] of sounds.
   def sounds
-    cache_file = "#{Bini.cache_dir}/sounds.json"
+    cache_file = "/tmp/sounds.json"
     sounds = {}
 
     cache_sounds if File.exists?(cache_file) && File.stat(cache_file).mtime < Time.at(Time.now.day - 1)
@@ -141,12 +133,12 @@ module Pushover
   end
 
   def cache_sounds
-    cache_file = "#{Bini.cache_dir}/sounds.json"
+    cache_file = "/tmp/sounds.json"
 
     response = HTTParty.get('https://api.pushover.net/1/sounds.json', query:{token:Pushover::App.current_app})
 
     return nil if response.code != 200
-    FileUtils.mkdir_p Bini.cache_dir
+    # FileUtils.mkdir_p Bini.cache_dir
     f = open(cache_file, 'w')
     f.write response.body
     f.flush
