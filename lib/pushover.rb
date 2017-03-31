@@ -69,6 +69,14 @@ module Pushover
     HTTParty.post('https://api.pushover.net/1/messages.json', body:tokens)
   end
 
+  # push a glance to pushover
+  def glance(fields)
+    fields[:user]  ||= @user
+    fields[:token] ||= @token
+
+    HTTParty.post('https://api.pushover.net/1/glances.json', body: fields)
+  end
+
   # Return a [Hash] of sounds.
   def sounds
     cache_file = "#{Bini.cache_dir}/sounds.json"
